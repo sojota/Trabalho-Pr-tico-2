@@ -1,115 +1,72 @@
-document.addEventListener('DOMContentLoaded', function() {
-    if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
-        fetchGitHubRepos();
-        fetchCarouselData();
-        fetchColegasData();
-    } else if (window.location.pathname.endsWith('repo.html')) {
-        loadRepoDetails();
-    }
-});
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Perfil</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+ 
+  <!-- Seção 1 - Perfil -->
+  <section id="secao1" class="container mt-5">
+    <h2>Perfil</h2>
+    <div class="card">
+      <div class="card-body">
+        <img id="avatar" alt="Avatar" class="rounded-square" width="100" height="100">
+        <h5 id="name" class="card-title"></h5>
+        <p id="bio" class="card-text"></p>
+        <a id="email" href="#" class="btn btn-primary">E-mail</a>
+        <a id="linkedin" href="#" class="btn btn-primary">LinkedIn</a>
+      </div>
+    </div>
+  </section>
 
-function fetchGitHubRepos() {
-    const username = 'RafaelIannini';
-    fetch(`https://api.github.com/users/${username}/repos`)
-        .then(response => response.json())
-        .then(repos => {
-            const reposContainer = document.getElementById('repos-container');
-            reposContainer.innerHTML = ''; // Limpa o conteúdo antes de adicionar os novos cards
-
-            repos.forEach((repo, index) => {
-                const repoCard = `
-                    <div class="card">
-                        <a href="repo.html" class="repo-link" data-repo-id="${index + 1}">
-                            <img src="assets/images/github.png" class="card-img-top" alt="Imagem da logo github">
-                        </a>
-                        <div class="card-body">
-                            <h5 class="card-title">${repo.name}</h5>
-                            <p class="card-text">${repo.description || 'Sem descrição'}</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Última atualização ${new Date(repo.updated_at).toLocaleDateString()}</small>
-                        </div>
-                    </div>
-                `;
-                reposContainer.innerHTML += repoCard;
-
-                // Salva informações na sessionStorage para as páginas individuais
-                sessionStorage.setItem(`repo${index + 1}`, JSON.stringify(repo));
-            });
-
-            // Adiciona event listeners aos links dos repositórios
-            document.querySelectorAll('.repo-link').forEach(link => {
-                link.addEventListener('click', function(event) {
-                    const repoId = event.currentTarget.getAttribute('data-repo-id');
-                    localStorage.setItem('selectedRepo', `repo${repoId}`);
-                });
-            });
-        })
-        .catch(error => console.error('Erro ao buscar repositórios:', error));
-}
-
-function loadRepoDetails() {
-    const repoId = localStorage.getItem('selectedRepo');
-    const repo = JSON.parse(sessionStorage.getItem(repoId));
-
-    if (repo) {
-        const repoDetailsContainer = document.getElementById('repo-details');
-        const repoDetails = `
-            <h2>${repo.name}</h2>
-            <p>${repo.description || 'Sem descrição'}</p>
-            <p><strong>Última atualização:</strong> ${new Date(repo.updated_at).toLocaleDateString()}</p>
-            <p><a href="${repo.html_url}" class="btn btn-secondary" target="_blank">Ver no GitHub</a></p>
-        `;
-        repoDetailsContainer.innerHTML = repoDetails;
-    } else {
-        document.getElementById('repo-details').innerHTML = '<p>Repositório não encontrado.</p>';
-    }
-}
+  <!-- Seção 2 - Repositórios -->
+  <section id="secao2" class="container mt-5">
+    <h2>Repositórios</h2>
+    <div class="mt-3">
+      <a href="https://github.com/sojota" class="btn btn-primary" target="_blank">Ver Todos os Repositórios</a>
+    </div>
+    <div id="repos" class="row">
+      <!-- Repositórios serão carregados aqui -->
+    </div>
+  </section>
 
 
-function fetchColegasData() {
-    fetch('db/db.json')
-        .then(response => response.json())
-        .then(data => {
-            const colegasContainer = document.querySelector('.colegas-container');
-            colegasContainer.innerHTML = ''; 
-            data.colegas.forEach(colega => {
-                const cardHTML = `
-                    <div class="card">
-                        <img src="${colega.foto}" class="card-img-top" alt="${colega.alt}">
-                        <div class="card-body">
-                            <h5 class="card-title">${colega.nome}</h5>
-                            <a href="${colega.github}" class="btn btn-secondary" target="_blank">Ver GitHub</a>
-                        </div>
-                    </div>
-                `;
-                colegasContainer.innerHTML += cardHTML;
-            });
-        })
-        .catch(error => console.error('Erro ao buscar dados dos colegas:', error));
-}
+  <!-- Seção 3 - Carrossel -->
+  <section id="secao3" class="container mt-5">
+    <h2>Carrossel</h2>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner" id="carousel-inner">
+        <!-- Itens do carrossel serão carregados aqui -->
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Anterior</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Próximo</span>
+      </a>
+    </div>
+  </section>
 
+  <!-- Seção 4 - Colegas -->
+  <section id="secao4" class="container mt-5">
+    <h2>Colegas de Trabalho</h2>
+    <div id="colleagues" class="row">
+      <!-- Colegas serão carregados aqui -->
+    </div>
+  </section>
 
+  <!-- Rodapé -->
+  <footer class="text-center mt-5">
+    Site desenvolvido por João Pedro Gomes
+  </footer>
 
-function fetchCarouselData() {
-    fetch('db/db.json') 
-        .then(response => response.json())
-        .then(data => {
-            const carouselIndicators = document.getElementById('carousel-indicators');
-            const carouselInner = document.getElementById('carousel-inner');
-            
-            data.carousel.forEach((item, index) => {
-                const indicator = `
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}" ${index === 0 ? 'class="active"' : ''} aria-label="Slide ${index + 1}"></button>
-                `;
-                const carouselItem = `
-                    <div class="carousel-item ${index === 0 ? 'active' : ''}">
-                        <img src="${item.image}" class="d-block w-100" alt="${item.alt}">
-                    </div>
-                `;
-                carouselIndicators.innerHTML += indicator;
-                carouselInner.innerHTML += carouselItem;
-            });
-        })
-        .catch(error => console.error('Erro ao buscar dados do carrossel:', error));
-}
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
