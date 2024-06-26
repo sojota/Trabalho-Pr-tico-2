@@ -1,140 +1,115 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meu Perfil</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
+        fetchGitHubRepos();
+        fetchCarouselData();
+        fetchColegasData();
+    } else if (window.location.pathname.endsWith('repo.html')) {
+        loadRepoDetails();
+    }
+});
 
-  <!-- Tela 1 - Home-Page -->
-  <div id="home-page" class="container mt-5">
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">SEU NOME</a>
-        <div class="collapse navbar-collapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link" href="#secao1">SEÇÃO 1</a></li>
-            <li class="nav-item"><a class="nav-link" href="#secao2">SEÇÃO 2</a></li>
-            <li class="nav-item"><a class="nav-link" href="#secao3">SEÇÃO 3</a></li>
-          </ul>
-        </div>
-      </nav>
-    </header>
+function fetchGitHubRepos() {
+    const username = 'RafaelIannini';
+    fetch(`https://api.github.com/users/${username}/repos`)
+        .then(response => response.json())
+        .then(repos => {
+            const reposContainer = document.getElementById('repos-container');
+            reposContainer.innerHTML = ''; // Limpa o conteúdo antes de adicionar os novos cards
 
-    <!-- Seção 1 - Perfil -->
-    <section id="secao1" class="mt-5">
-      <h2>Perfil</h2>
-      <div class="card">
-        <div class="card-body">
-          <img src="perfil.jpg" alt="Avatar" class="rounded-square" width="100" height="100">
-          <h5>Fulano de Tal Silva (NOME)</h5>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure nisi eum dolorum animi similique soluta eaque excepteur pariatur velit. Corporis at sapiente rem sed non dolores iste maxime dolorem. (BIO)</p>
-          <p><strong>Location:</strong> Sorocaba, SP, Brazil</p>
-          <p><strong>Site:</strong> <a href="https://pucminas.br/fulanotalsilva">https://pucminas.br/fulanotalsilva</a></p>
-          <div>
-            <a href="#" class="btn btn-primary">Facebook</a>
-            <a href="#" class="btn btn-primary">Twitter</a>
-            <a href="#" class="btn btn-primary">Instagram</a>
-          </div>
-          <p><strong>Seguidores:</strong> 125</p>
-        </div>
-      </div>
-    </section>
+            repos.forEach((repo, index) => {
+                const repoCard = `
+                    <div class="card">
+                        <a href="repo.html" class="repo-link" data-repo-id="${index + 1}">
+                            <img src="assets/images/github.png" class="card-img-top" alt="Imagem da logo github">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">${repo.name}</h5>
+                            <p class="card-text">${repo.description || 'Sem descrição'}</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Última atualização ${new Date(repo.updated_at).toLocaleDateString()}</small>
+                        </div>
+                    </div>
+                `;
+                reposContainer.innerHTML += repoCard;
 
-    <!-- Seção 2 - Repositórios -->
-    <section id="secao2" class="mt-5">
-      <h2>Repositórios (7)</h2>
-      <div id="repos" class="row">
-        <!-- Exemplo de repositório -->
-        <div class="col-md-4 mb-3" onclick="showRepositoryDetail(1)">
-          <div class="card">
-            <div class="card-body">
-              <div>★ 5</div>
-              <div>🍴 3</div>
-              <div>🗨️ 8</div>
-            </div>
-          </div>
-        </div>
-        <!-- Repita para outros repositórios -->
-      </div>
-    </section>
+                // Salva informações na sessionStorage para as páginas individuais
+                sessionStorage.setItem(`repo${index + 1}`, JSON.stringify(repo));
+            });
 
-    <!-- Seção 3 - Carrossel -->
-    <section id="secao3" class="mt-5">
-      <h2>Conteúdo sugerido</h2>
-      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner" id="carousel-inner">
-          <!-- Itens do carrossel serão carregados aqui -->
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Anterior</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Próximo</span>
-        </a>
-      </div>
-    </section>
+            // Adiciona event listeners aos links dos repositórios
+            document.querySelectorAll('.repo-link').forEach(link => {
+                link.addEventListener('click', function(event) {
+                    const repoId = event.currentTarget.getAttribute('data-repo-id');
+                    localStorage.setItem('selectedRepo', `repo${repoId}`);
+                });
+            });
+        })
+        .catch(error => console.error('Erro ao buscar repositórios:', error));
+}
 
-    <!-- Seção 4 - Colegas -->
-    <section id="secao4" class="mt-5">
-      <h2>Colegas de Trabalho</h2>
-      <div id="colleagues" class="row">
-        <!-- Exemplo de colega -->
-        <div class="col-md-2 text-center">
-          <img src="colega1.jpg" alt="Colega 1" class="rounded-circle" width="50" height="50">
-          <p>Colega 1</p>
-        </div>
-        <!-- Repita para outros colegas -->
-      </div>
-    </section>
-  </div>
+function loadRepoDetails() {
+    const repoId = localStorage.getItem('selectedRepo');
+    const repo = JSON.parse(sessionStorage.getItem(repoId));
 
-  <!-- Tela 2 - Detalhe do Repositório -->
-  <div id="repositorio-detalhe" class="container mt-5 hidden">
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">SEU NOME</a>
-        <div class="collapse navbar-collapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link" href="#">LINK 1</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">LINK 2</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">LINK 3</a></li>
-          </ul>
-        </div>
-      </nav>
-    </header>
-    <section class="detalhe mt-5">
-      <h2>Repositório: Illum dicta odit ad harum nulla ea animi</h2>
-      <p><strong>Descrição:</strong> Sapiente qui ut eaque ab nihil aliquam nemo, id quasi laborum perspiciatis mollitia odio fugiat eius magnam libero? Voluptatem officia facere, laudantium sunt accusantium explicabo libero iste adipisci nesciunt soluta enim? Adipisci veniam repellendus ab cumque voluptates exercitationem inventore, fugiat dicta odit dolores quo possimus repudiandae, ducimus ut harum dolorem iusto! Iaque!</p>
-      <p><strong>Data de Criação:</strong> 2024-04-01</p>
-      <p><strong>Linguagem:</strong> JavaScript</p>
-      <p><strong>Link de Acesso:</strong> <a href="https://github.com/WebTech-PUC-Minas/th-template-01">https://github.com/WebTech-PUC-Minas/th-template-01</a></p>
-      <div class="topicos">
-        <span class="badge badge-primary">JavaScript</span>
-        <span class="badge badge-primary">DevOps</span>
-        <span class="badge badge-primary">Frontend</span>
-        <span class="badge badge-primary">React</span>
-        <span class="badge badge-primary">ReactNative</span>
-      </div>
-      <div>★ 0</div>
-      <div>🍴 2</div>
-    </section>
-  </div>
+    if (repo) {
+        const repoDetailsContainer = document.getElementById('repo-details');
+        const repoDetails = `
+            <h2>${repo.name}</h2>
+            <p>${repo.description || 'Sem descrição'}</p>
+            <p><strong>Última atualização:</strong> ${new Date(repo.updated_at).toLocaleDateString()}</p>
+            <p><a href="${repo.html_url}" class="btn btn-secondary" target="_blank">Ver no GitHub</a></p>
+        `;
+        repoDetailsContainer.innerHTML = repoDetails;
+    } else {
+        document.getElementById('repo-details').innerHTML = '<p>Repositório não encontrado.</p>';
+    }
+}
 
-  <!-- Rodapé -->
-  <footer class="text-center mt-5">
-    Site desenvolvido por João Pedro Gomes
-  </footer>
 
-  <!-- JavaScript -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="script.js"></script>
-</body>
-</html>
+function fetchColegasData() {
+    fetch('db/db.json')
+        .then(response => response.json())
+        .then(data => {
+            const colegasContainer = document.querySelector('.colegas-container');
+            colegasContainer.innerHTML = ''; 
+            data.colegas.forEach(colega => {
+                const cardHTML = `
+                    <div class="card">
+                        <img src="${colega.foto}" class="card-img-top" alt="${colega.alt}">
+                        <div class="card-body">
+                            <h5 class="card-title">${colega.nome}</h5>
+                            <a href="${colega.github}" class="btn btn-secondary" target="_blank">Ver GitHub</a>
+                        </div>
+                    </div>
+                `;
+                colegasContainer.innerHTML += cardHTML;
+            });
+        })
+        .catch(error => console.error('Erro ao buscar dados dos colegas:', error));
+}
+
+
+
+function fetchCarouselData() {
+    fetch('db/db.json') 
+        .then(response => response.json())
+        .then(data => {
+            const carouselIndicators = document.getElementById('carousel-indicators');
+            const carouselInner = document.getElementById('carousel-inner');
+            
+            data.carousel.forEach((item, index) => {
+                const indicator = `
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}" ${index === 0 ? 'class="active"' : ''} aria-label="Slide ${index + 1}"></button>
+                `;
+                const carouselItem = `
+                    <div class="carousel-item ${index === 0 ? 'active' : ''}">
+                        <img src="${item.image}" class="d-block w-100" alt="${item.alt}">
+                    </div>
+                `;
+                carouselIndicators.innerHTML += indicator;
+                carouselInner.innerHTML += carouselItem;
+            });
+        })
+        .catch(error => console.error('Erro ao buscar dados do carrossel:', error));
+}
