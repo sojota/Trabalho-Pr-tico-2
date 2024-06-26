@@ -8,58 +8,123 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
- 
-  <!-- Seção 1 - Perfil -->
-  <section id="secao1" class="container mt-5">
-    <h2>Perfil</h2>
-    <div class="card">
-      <div class="card-body">
-        <img id="avatar" alt="Avatar" class="rounded-square" width="100" height="100">
-        <h5 id="name" class="card-title"></h5>
-        <p id="bio" class="card-text"></p>
-        <a id="email" href="#" class="btn btn-primary">E-mail</a>
-        <a id="linkedin" href="#" class="btn btn-primary">LinkedIn</a>
+
+  <!-- Tela 1 - Home-Page -->
+  <div id="home-page" class="container mt-5">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">SEU NOME</a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="#secao1">SEÇÃO 1</a></li>
+            <li class="nav-item"><a class="nav-link" href="#secao2">SEÇÃO 2</a></li>
+            <li class="nav-item"><a class="nav-link" href="#secao3">SEÇÃO 3</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Seção 1 - Perfil -->
+    <section id="secao1" class="mt-5">
+      <h2>Perfil</h2>
+      <div class="card">
+        <div class="card-body">
+          <img src="perfil.jpg" alt="Avatar" class="rounded-square" width="100" height="100">
+          <h5>Fulano de Tal Silva (NOME)</h5>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure nisi eum dolorum animi similique soluta eaque excepteur pariatur velit. Corporis at sapiente rem sed non dolores iste maxime dolorem. (BIO)</p>
+          <p><strong>Location:</strong> Sorocaba, SP, Brazil</p>
+          <p><strong>Site:</strong> <a href="https://pucminas.br/fulanotalsilva">https://pucminas.br/fulanotalsilva</a></p>
+          <div>
+            <a href="#" class="btn btn-primary">Facebook</a>
+            <a href="#" class="btn btn-primary">Twitter</a>
+            <a href="#" class="btn btn-primary">Instagram</a>
+          </div>
+          <p><strong>Seguidores:</strong> 125</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Seção 2 - Repositórios -->
-  <section id="secao2" class="container mt-5">
-    <h2>Repositórios</h2>
-    <div class="mt-3">
-      <a href="https://github.com/sojota" class="btn btn-primary" target="_blank">Ver Todos os Repositórios</a>
-    </div>
-    <div id="repos" class="row">
-      <!-- Repositórios serão carregados aqui -->
-    </div>
-  </section>
-
-
-  <!-- Seção 3 - Carrossel -->
-  <section id="secao3" class="container mt-5">
-    <h2>Carrossel</h2>
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner" id="carousel-inner">
-        <!-- Itens do carrossel serão carregados aqui -->
+    <!-- Seção 2 - Repositórios -->
+    <section id="secao2" class="mt-5">
+      <h2>Repositórios (7)</h2>
+      <div id="repos" class="row">
+        <!-- Exemplo de repositório -->
+        <div class="col-md-4 mb-3" onclick="showRepositoryDetail(1)">
+          <div class="card">
+            <div class="card-body">
+              <div>★ 5</div>
+              <div>🍴 3</div>
+              <div>🗨️ 8</div>
+            </div>
+          </div>
+        </div>
+        <!-- Repita para outros repositórios -->
       </div>
-      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Anterior</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Próximo</span>
-      </a>
-    </div>
-  </section>
+    </section>
 
-  <!-- Seção 4 - Colegas -->
-  <section id="secao4" class="container mt-5">
-    <h2>Colegas de Trabalho</h2>
-    <div id="colleagues" class="row">
-      <!-- Colegas serão carregados aqui -->
-    </div>
-  </section>
+    <!-- Seção 3 - Carrossel -->
+    <section id="secao3" class="mt-5">
+      <h2>Conteúdo sugerido</h2>
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" id="carousel-inner">
+          <!-- Itens do carrossel serão carregados aqui -->
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Próximo</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Seção 4 - Colegas -->
+    <section id="secao4" class="mt-5">
+      <h2>Colegas de Trabalho</h2>
+      <div id="colleagues" class="row">
+        <!-- Exemplo de colega -->
+        <div class="col-md-2 text-center">
+          <img src="colega1.jpg" alt="Colega 1" class="rounded-circle" width="50" height="50">
+          <p>Colega 1</p>
+        </div>
+        <!-- Repita para outros colegas -->
+      </div>
+    </section>
+  </div>
+
+  <!-- Tela 2 - Detalhe do Repositório -->
+  <div id="repositorio-detalhe" class="container mt-5 hidden">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">SEU NOME</a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="#">LINK 1</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">LINK 2</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">LINK 3</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <section class="detalhe mt-5">
+      <h2>Repositório: Illum dicta odit ad harum nulla ea animi</h2>
+      <p><strong>Descrição:</strong> Sapiente qui ut eaque ab nihil aliquam nemo, id quasi laborum perspiciatis mollitia odio fugiat eius magnam libero? Voluptatem officia facere, laudantium sunt accusantium explicabo libero iste adipisci nesciunt soluta enim? Adipisci veniam repellendus ab cumque voluptates exercitationem inventore, fugiat dicta odit dolores quo possimus repudiandae, ducimus ut harum dolorem iusto! Iaque!</p>
+      <p><strong>Data de Criação:</strong> 2024-04-01</p>
+      <p><strong>Linguagem:</strong> JavaScript</p>
+      <p><strong>Link de Acesso:</strong> <a href="https://github.com/WebTech-PUC-Minas/th-template-01">https://github.com/WebTech-PUC-Minas/th-template-01</a></p>
+      <div class="topicos">
+        <span class="badge badge-primary">JavaScript</span>
+        <span class="badge badge-primary">DevOps</span>
+        <span class="badge badge-primary">Frontend</span>
+        <span class="badge badge-primary">React</span>
+        <span class="badge badge-primary">ReactNative</span>
+      </div>
+      <div>★ 0</div>
+      <div>🍴 2</div>
+    </section>
+  </div>
 
   <!-- Rodapé -->
   <footer class="text-center mt-5">
@@ -67,6 +132,9 @@
   </footer>
 
   <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
