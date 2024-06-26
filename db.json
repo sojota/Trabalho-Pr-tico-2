@@ -1,0 +1,57 @@
+{
+  "carousel": [
+    {
+      "image": "imagens/images/cc.jpg",
+      "alt": "Slide 1"
+    },
+    {
+      "image": "imagens/images/cc.jpg",
+      "alt": "Slide 2"
+    },
+    {
+      "image": "imagens/images/cc2.jpg",
+      "alt": "Slide 3"
+    },
+    {
+      "image": "imagens/images/pucigreja.jpg",
+      "alt": "Slide 4"
+    },
+    {
+      "image": "imagens/images/linkedin.jpg",
+      "alt": "Slide 5"
+    }
+  ],
+  
+    "colegas": [
+      {
+        "id": 1,
+        "foto": "imagens/images/julio.png",
+        "alt": "Foto do Julio",
+        "nome": "Julio Cesar",
+        "github": "https://github.com/JulioBuzzi"
+      },
+      {
+        "id": 2,
+        "foto": "imagens/images/julio.png",
+        "alt": "Foto do Vitor S",
+        "nome": "Victor Stransky",
+        "github": "https://github.com/VictorStransky"
+      },
+      {
+        "id": 3,
+        "foto": "imagens/images/julio.png",
+        "alt": "Foto do Vitor",
+        "nome": "Vitor Tiradentes",
+        "github": "https://github.com/VitorTss"
+      },
+      {
+        "id": 4,
+        "foto": "imagens/images/julio.png",
+        "alt": "Foto do Gabriel",
+        "nome": "Gabriel Dias",
+        "github": "https://github.com/GabrieldTostes"
+      }
+      
+    ]
+  }
+  
