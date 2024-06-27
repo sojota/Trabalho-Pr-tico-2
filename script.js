@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
         fetchGitHubRepos();
         fetchCarouselData();
-        fetchColegasData(); // Adicionando a função para buscar dados dos colegas
+        fetchColegasData();
     } else if (window.location.pathname.endsWith('repo.html')) {
         loadRepoDetails();
     }
@@ -34,7 +34,7 @@ function fetchGitHubRepos() {
 }
 
 function fetchColegasData() {
-    fetch('Trabalho-Pr-tico-2/db.json') // Ajuste aqui para o caminho correto
+    fetch('db.json')
         .then(response => response.json())
         .then(data => {
             const colegasContainer = document.getElementById('colleagues');
@@ -59,7 +59,7 @@ function fetchColegasData() {
 }
 
 function fetchCarouselData() {
-    fetch('Trabalho-Pr-tico-2/db.json') // Ajuste aqui para o caminho correto
+    fetch('db.json')
         .then(response => response.json())
         .then(data => {
             const carouselIndicators = document.getElementById('carousel-indicators');
