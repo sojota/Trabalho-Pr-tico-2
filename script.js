@@ -34,7 +34,7 @@ function fetchGitHubRepos() {
 }
 
 function fetchColegasData() {
-    fetch('jsonServer.json')
+    fetch('db.json') // Caminho para o seu arquivo JSON com os dados dos colegas
         .then(response => response.json())
         .then(data => {
             const colegasContainer = document.querySelector('.colegas-container');
