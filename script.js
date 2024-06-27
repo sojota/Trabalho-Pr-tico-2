@@ -57,7 +57,7 @@ function fetchColegasData() {
 }
 
 function fetchCarouselData() {
-    fetch('db/db.json')
+    fetch('db.json')
         .then(response => response.json())
         .then(data => {
             const carouselIndicators = document.getElementById('carousel-indicators');
