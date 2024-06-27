@@ -1,4 +1,4 @@
-{
+a{
   "colegas": [
     {
       "id": 1,
@@ -35,7 +35,7 @@
       "alt": "Slide 1"
     },
     {
-      "image": "/imagens/2.jpg",
+      "image": "/imagens/cc2.jpg",
       "alt": "Slide 2"
     }
   ]
