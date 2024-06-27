@@ -31,11 +31,11 @@
   ],
   "carousel": [
     {
-      "image": "/path/to/image1.jpg",
+      "image": "/imagens/cc.jpg",
       "alt": "Slide 1"
     },
     {
-      "image": "/path/to/image2.jpg",
+      "image": "/imagens/2.jpg",
       "alt": "Slide 2"
     }
   ]
