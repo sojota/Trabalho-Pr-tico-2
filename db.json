@@ -21,21 +21,21 @@
       },
       {
         "id": 2,
-        "foto": "imagens/images/julio.png",
+        "foto": "imagens/images/vitorS.png",
         "alt": "Foto do Vitor S",
         "nome": "Victor Stransky",
         "github": "https://github.com/VictorStransky"
       },
       {
         "id": 3,
-        "foto": "imagens/images/julio.png",
+        "foto": "imagens/images/rafael.png",
         "alt": "Foto do Vitor",
-        "nome": "Vitor Tiradentes",
-        "github": "https://github.com/VitorTss"
+        "nome": "Rafael Iannini",
+        "github": "https://github.com/rafaeliannini"
       },
       {
         "id": 4,
-        "foto": "imagens/images/julio.png",
+        "foto": "imagens/images/gabriel.png",
         "alt": "Foto do Gabriel",
         "nome": "Gabriel Dias",
         "github": "https://github.com/GabrieldTostes"
