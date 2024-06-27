@@ -1,45 +1,42 @@
 {
+  "colegas": [
+    {
+      "id": 1,
+      "foto": "/images/julio.png",
+      "alt": "Foto do Julio",
+      "nome": "Julio Cesar",
+      "github": "https://github.com/JulioBuzzi"
+    },
+    {
+      "id": 2,
+      "foto": "/images/julio.png",
+      "alt": "Foto do Vitor S",
+      "nome": "Victor Stransky",
+      "github": "https://github.com/VictorStransky"
+    },
+    {
+      "id": 3,
+      "foto": "/images/julio.png",
+      "alt": "Foto do Vitor",
+      "nome": "Vitor Tiradentes",
+      "github": "https://github.com/VitorTss"
+    },
+    {
+      "id": 4,
+      "foto": "/images/julio.png",
+      "alt": "Foto do Gabriel",
+      "nome": "Gabriel Dias",
+      "github": "https://github.com/GabrieldTostes"
+    }
+  ],
   "carousel": [
     {
-      "image": "imagens/images/cc.jpg",
+      "image": "/path/to/image1.jpg",
       "alt": "Slide 1"
     },
     {
-      "image": "imagens/images/cc2.jpg",
+      "image": "/path/to/image2.jpg",
       "alt": "Slide 2"
     }
-   
-  ],
-  
-{
-    "colegas": [
-        {
-            "id": 1,
-            "foto": "/images/julio.png",
-            "alt": "Foto do Julio",
-            "nome": "Julio Cesar",
-            "github": "https://github.com/JulioBuzzi"
-        },
-        {
-            "id": 2,
-            "foto": "/images/julio.png",
-            "alt": "Foto do Vitor S",
-            "nome": "Victor Stransky",
-            "github": "https://github.com/VictorStransky"
-        },
-        {
-            "id": 3,
-            "foto": "/images/julio.png",
-            "alt": "Foto do Vitor",
-            "nome": "Vitor Tiradentes",
-            "github": "https://github.com/VitorTss"
-        },
-        {
-            "id": 4,
-            "foto": "/images/julio.png",
-            "alt": "Foto do Gabriel",
-            "nome": "Gabriel Dias",
-            "github": "https://github.com/GabrieldTostes"
-        }
-    ],
+  ]
 }
