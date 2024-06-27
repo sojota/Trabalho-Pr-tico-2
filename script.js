@@ -59,8 +59,13 @@ function fetchColegasData() {
 }
 
 function fetchCarouselData() {
-    fetch('/Trabalho-Pr-tico-2/db.json') // Ajuste aqui para o caminho correto
-        .then(response => response.json())
+    fetch('/Trabalho-Pr-tico-2/db.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao carregar os dados do carrossel. Status: ' + response.status);
+            }
+            return response.json();
+        })
         .then(data => {
             const carouselIndicators = document.getElementById('carousel-indicators');
             const carouselInner = document.getElementById('carousel-inner');
