@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
         fetchGitHubRepos();
         fetchCarouselData();
-        fetchColegasData();
+        fetchColegasData(); // Adicionando a função para buscar dados dos colegas
     } else if (window.location.pathname.endsWith('repo.html')) {
         loadRepoDetails();
     }
