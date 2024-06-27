@@ -34,7 +34,7 @@ function fetchGitHubRepos() {
 }
 
 function fetchColegasData() {
-    fetch('db.json')
+    fetch('/Trabalho-Pr-tico-2/db.json') // Ajuste aqui para o caminho correto
         .then(response => response.json())
         .then(data => {
             const colegasContainer = document.getElementById('colleagues');
@@ -59,7 +59,7 @@ function fetchColegasData() {
 }
 
 function fetchCarouselData() {
-    fetch('db.json')
+    fetch('/Trabalho-Pr-tico-2/db.json') // Ajuste aqui para o caminho correto
         .then(response => response.json())
         .then(data => {
             const carouselIndicators = document.getElementById('carousel-indicators');
