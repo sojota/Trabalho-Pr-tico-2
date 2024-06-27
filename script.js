@@ -33,30 +33,31 @@ function fetchGitHubRepos() {
         .catch(error => console.error('Erro ao buscar repositórios:', error));
 }
 
-function fetchColegasData() {
-    fetch('db.json')
-        .then(response => response.json())
-        .then(data => {
-            const colegasContainer = document.getElementById('colegas'); // Seleciona a div correta para os colegas
-            colegasContainer.innerHTML = ''; // Limpa o conteúdo antes de adicionar os novos cards
+const fs = require('fs');
 
-            data.colegas.forEach(colega => {
-                const cardHTML = `
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <img src="${colega.foto}" class="card-img-top" alt="${colega.alt}">
-                            <div class="card-body">
-                                <h5 class="card-title">${colega.nome}</h5>
-                                <a href="${colega.github}" class="btn btn-secondary" target="_blank">Ver GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                colegasContainer.innerHTML += cardHTML;
-            });
-        })
-        .catch(error => console.error('Erro ao buscar dados dos colegas:', error));
+// Função para carregar os dados do arquivo JSON
+function carregarColegas(file_path) {
+    try {
+        const data = fs.readFileSync(file_path, 'utf8');
+        const jsonData = JSON.parse(data);
+        const colegas = jsonData.colegas || []; // Obtém a lista de colegas do JSON
+
+        return colegas;
+    } catch (error) {
+        console.error('Erro ao ler o arquivo:', error.message);
+        return [];
+    }
 }
+
+// Caminho para o arquivo db.json
+const dbFile = 'caminho/para/db.json'; // Substitua pelo caminho correto do seu arquivo db.json
+
+// Carregar e exibir os dados dos colegas
+const colegas = carregarColegas(dbFile);
+colegas.forEach(colega => {
+    console.log(`ID: ${colega.id}, Nome: ${colega.nome}, GitHub: ${colega.github}, Foto: ${colega.foto}, Alt: ${colega.alt}`);
+});
+
 
 function fetchCarouselData() {
     fetch('db.json')
