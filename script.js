@@ -42,7 +42,7 @@ function fetchColegasData() {
 
             data.colegas.forEach(colega => {
                 const cardHTML = `
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-3 mb-4">
                         <div class="card">
                             <img src="${colega.foto}" class="card-img-top" alt="${colega.alt}">
                             <div class="card-body">
@@ -59,7 +59,7 @@ function fetchColegasData() {
 }
 
 function fetchCarouselData() {
-    fetch('db.json')
+    fetch('db/db.json')
         .then(response => response.json())
         .then(data => {
             const carouselIndicators = document.getElementById('carousel-indicators');
