@@ -33,42 +33,41 @@ function fetchGitHubRepos() {
         .catch(error => console.error('Erro ao buscar repositórios:', error));
 }
 
-const fs = require('fs');
+function fetchColegasData() {
+    fetch('db.json')
+        .then(response => response.json())
+        .then(data => {
+            const colegasContainer = document.getElementById('colegas');
+            colegasContainer.innerHTML = ''; // Limpa o conteúdo antes de adicionar os novos cards
 
-// Função para carregar os dados do arquivo JSON
-function carregarColegas(file_path) {
-    try {
-        const data = fs.readFileSync(file_path, 'utf8');
-        const jsonData = JSON.parse(data);
-        const colegas = jsonData.colegas || []; // Obtém a lista de colegas do JSON
-
-        return colegas;
-    } catch (error) {
-        console.error('Erro ao ler o arquivo:', error.message);
-        return [];
-    }
+            data.colegas.forEach(colega => {
+                const cardHTML = `
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="${colega.foto}" class="card-img-top" alt="${colega.alt}">
+                            <div class="card-body">
+                                <h5 class="card-title">${colega.nome}</h5>
+                                <a href="${colega.github}" class="btn btn-secondary" target="_blank">Ver GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                colegasContainer.innerHTML += cardHTML;
+            });
+        })
+        .catch(error => console.error('Erro ao buscar dados dos colegas:', error));
 }
-
-// Caminho para o arquivo db.json
-const dbFile = 'caminho/para/db.json'; // Substitua pelo caminho correto do seu arquivo db.json
-
-// Carregar e exibir os dados dos colegas
-const colegas = carregarColegas(dbFile);
-colegas.forEach(colega => {
-    console.log(`ID: ${colega.id}, Nome: ${colega.nome}, GitHub: ${colega.github}, Foto: ${colega.foto}, Alt: ${colega.alt}`);
-});
-
 
 function fetchCarouselData() {
     fetch('db.json')
         .then(response => response.json())
         .then(data => {
-            const carouselIndicators = document.getElementById('carouselExampleControls');
+            const carouselIndicators = document.getElementById('carousel-indicators');
             const carouselInner = document.getElementById('carousel-inner');
 
             data.carousel.forEach((item, index) => {
                 const indicator = `
-                    <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="${index}" ${index === 0 ? 'class="active"' : ''} aria-label="Slide ${index + 1}"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}" ${index === 0 ? 'class="active"' : ''} aria-label="Slide ${index + 1}"></button>
                 `;
                 const carouselItem = `
                     <div class="carousel-item ${index === 0 ? 'active' : ''}">
