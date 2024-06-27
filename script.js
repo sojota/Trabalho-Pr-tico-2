@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
         fetchGitHubRepos();
         fetchCarouselData();
-        fetchColegasData(); // Chamada da função para buscar dados dos colegas
+        fetchColegasData();
     } else if (window.location.pathname.endsWith('repo.html')) {
         loadRepoDetails();
     }
@@ -34,19 +34,21 @@ function fetchGitHubRepos() {
 }
 
 function fetchColegasData() {
-    fetch('db.json') // Caminho para o seu arquivo JSON com os dados dos colegas
+    fetch('db.json')
         .then(response => response.json())
         .then(data => {
-            const colegasContainer = document.querySelector('.colegas-container');
+            const colegasContainer = document.getElementById('colleagues');
             colegasContainer.innerHTML = ''; // Limpa o conteúdo antes de adicionar os novos cards
 
             data.colegas.forEach(colega => {
                 const cardHTML = `
-                    <div class="card">
-                        <img src="${colega.foto}" class="card-img-top" alt="${colega.alt}">
-                        <div class="card-body">
-                            <h5 class="card-title">${colega.nome}</h5>
-                            <a href="${colega.github}" class="btn btn-secondary" target="_blank">Ver GitHub</a>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="${colega.foto}" class="card-img-top" alt="${colega.alt}">
+                            <div class="card-body">
+                                <h5 class="card-title">${colega.nome}</h5>
+                                <a href="${colega.github}" class="btn btn-secondary" target="_blank">Ver GitHub</a>
+                            </div>
                         </div>
                     </div>
                 `;
