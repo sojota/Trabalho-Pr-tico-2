@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
+        fetchProfileData();
         fetchGitHubRepos();
         fetchCarouselData();
         fetchColegasData();
@@ -7,6 +8,20 @@ document.addEventListener('DOMContentLoaded', function() {
         loadRepoDetails();
     }
 });
+
+function fetchProfileData() {
+    fetch('db.json')
+        .then(response => response.json())
+        .then(data => {
+            const perfil = data.perfil;
+            document.getElementById('avatar').src = perfil.avatar;
+            document.getElementById('avatar').alt = perfil.alt;
+            document.getElementById('name').textContent = perfil.nome;
+            document.getElementById('bio').textContent = perfil.bio;
+            document.getElementById('linkedin').href = perfil.linkedin;
+        })
+        .catch(error => console.error('Erro ao buscar dados do perfil:', error));
+}
 
 function fetchGitHubRepos() {
     const username = 'sojota'; // Nome de usuário do GitHub
