@@ -34,21 +34,19 @@ function fetchGitHubRepos() {
 }
 
 function fetchColegasData() {
-    fetch('/Trabalho-Pr-tico-2/db.json') // Ajuste aqui para o caminho correto
+    fetch('jsonServer.json')
         .then(response => response.json())
         .then(data => {
-            const colegasContainer = document.getElementById('colleagues');
+            const colegasContainer = document.querySelector('.colegas-container');
             colegasContainer.innerHTML = ''; // Limpa o conteúdo antes de adicionar os novos cards
 
             data.colegas.forEach(colega => {
                 const cardHTML = `
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <img src="${colega.foto}" class="card-img-top" alt="${colega.alt}">
-                            <div class="card-body">
-                                <h5 class="card-title">${colega.nome}</h5>
-                                <a href="${colega.github}" class="btn btn-secondary" target="_blank">Ver GitHub</a>
-                            </div>
+                    <div class="card">
+                        <img src="${colega.foto}" class="card-img-top" alt="${colega.alt}">
+                        <div class="card-body">
+                            <h5 class="card-title">${colega.nome}</h5>
+                            <a href="${colega.github}" class="btn btn-secondary" target="_blank">Ver GitHub</a>
                         </div>
                     </div>
                 `;
@@ -59,7 +57,7 @@ function fetchColegasData() {
 }
 
 function fetchCarouselData() {
-    fetch('/Trabalho-Pr-tico-2/db.json') // Ajuste aqui para o caminho correto
+    fetch('db/db.json')
         .then(response => response.json())
         .then(data => {
             const carouselIndicators = document.getElementById('carousel-indicators');
