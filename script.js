@@ -37,7 +37,7 @@ function fetchColegasData() {
     fetch('db.json')
         .then(response => response.json())
         .then(data => {
-            const colegasContainer = document.getElementById('colleagues');
+            const colegasContainer = document.getElementById('colegas'); // Seleciona a div correta para os colegas
             colegasContainer.innerHTML = ''; // Limpa o conteúdo antes de adicionar os novos cards
 
             data.colegas.forEach(colega => {
@@ -62,12 +62,12 @@ function fetchCarouselData() {
     fetch('db.json')
         .then(response => response.json())
         .then(data => {
-            const carouselIndicators = document.getElementById('carousel-indicators');
+            const carouselIndicators = document.getElementById('carouselExampleControls');
             const carouselInner = document.getElementById('carousel-inner');
 
             data.carousel.forEach((item, index) => {
                 const indicator = `
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}" ${index === 0 ? 'class="active"' : ''} aria-label="Slide ${index + 1}"></button>
+                    <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="${index}" ${index === 0 ? 'class="active"' : ''} aria-label="Slide ${index + 1}"></button>
                 `;
                 const carouselItem = `
                     <div class="carousel-item ${index === 0 ? 'active' : ''}">
