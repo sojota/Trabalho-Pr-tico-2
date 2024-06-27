@@ -38,5 +38,12 @@
       "image": "/imagens/cc2.jpg",
       "alt": "Slide 2"
     }
-  ]
+  ],
+  "perfil": {
+    "avatar": "/images/joao.png",
+    "alt": "Avatar",
+    "nome": "João Pedro Machado",
+    "bio": "Desenvolvedor Full Stack JavaScript/HTML/CSS, Node.js, Python, SQL",
+    "linkedin": "https://www.linkedin.com/in/joão-pedro-machado-85714226a/"
+  }
 }
