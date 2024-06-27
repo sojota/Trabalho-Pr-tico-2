@@ -62,19 +62,14 @@ function fetchCarouselData() {
     fetch('db.json')
         .then(response => response.json())
         .then(data => {
-            const carouselIndicators = document.getElementById('carousel-indicators');
             const carouselInner = document.getElementById('carousel-inner');
 
             data.carousel.forEach((item, index) => {
-                const indicator = `
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}" ${index === 0 ? 'class="active"' : ''} aria-label="Slide ${index + 1}"></button>
-                `;
                 const carouselItem = `
                     <div class="carousel-item ${index === 0 ? 'active' : ''}">
                         <img src="${item.image}" class="d-block w-100" alt="${item.alt}">
                     </div>
                 `;
-                carouselIndicators.innerHTML += indicator;
                 carouselInner.innerHTML += carouselItem;
             });
         })
