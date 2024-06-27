@@ -12,7 +12,7 @@
   ],
   
 {
-"colegas": [
+    "colegas": [
         {
             "id": 1,
             "foto": "/images/julio.png",
@@ -42,4 +42,3 @@
             "github": "https://github.com/GabrieldTostes"
         }
     ],
-
