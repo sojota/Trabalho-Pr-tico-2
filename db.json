@@ -11,36 +11,36 @@
    
   ],
   
-    "colegas": [
-      {
-        "id": 1,
-        "foto": "imagens/images/julio.png",
-        "alt": "Foto do Julio",
-        "nome": "Julio Cesar",
-        "github": "https://github.com/JulioBuzzi"
-      },
-      {
-        "id": 2,
-        "foto": "imagens/images/vitorS.png",
-        "alt": "Foto do Vitor S",
-        "nome": "Victor Stransky",
-        "github": "https://github.com/VictorStransky"
-      },
-      {
-        "id": 3,
-        "foto": "imagens/images/rafael.png",
-        "alt": "Foto do Vitor",
-        "nome": "Rafael Iannini",
-        "github": "https://github.com/rafaeliannini"
-      },
-      {
-        "id": 4,
-        "foto": "imagens/images/gabriel.png",
-        "alt": "Foto do Gabriel",
-        "nome": "Gabriel Dias",
-        "github": "https://github.com/GabrieldTostes"
-      }
-      
-    ]
-  }
-  
+{
+  "colegas": [
+    {
+      "id": 1,
+      "foto": "imagens/images/julio.png",
+      "alt": "Foto do Julio",
+      "nome": "Julio Cesar",
+      "github": "https://github.com/JulioBuzzi"
+    },
+    {
+      "id": 2,
+      "foto": "imagens/images/vitorS.png",
+      "alt": "Foto do Vitor S",
+      "nome": "Victor Stransky",
+      "github": "https://github.com/VictorStransky"
+    },
+    {
+      "id": 3,
+      "foto": "imagens/images/rafael.png",
+      "alt": "Foto do Vitor",
+      "nome": "Rafael Iannini",
+      "github": "https://github.com/rafaeliannini"
+    },
+    {
+      "id": 4,
+      "foto": "imagens/images/gabriel.png",
+      "alt": "Foto do Gabriel",
+      "nome": "Gabriel Dias",
+      "github": "https://github.com/GabrieldTostes"
+    }
+  ]
+}
+
